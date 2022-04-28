@@ -24,17 +24,20 @@ const war='https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb
 const western='https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page=1&with_genres=37';
 const genreUrl = 'https://api.themoviedb.org/3/genre/movie/list?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US';
 */
-const ImageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+const imageBaseUrlOriginal = 'https://image.tmdb.org/t/p/original';
 
 
 
 const GetData = () => {
     const status = useSelector(state => state.getdata.status);
-    const data = useSelector(state => state.getdata);
-    const [currentGenre, setCurrentGenre] = useState(0);
-    const [currentPage, setCurrentPage] = useState("2");
+    const data = useSelector(state => state.getdata.data);
     const baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page='
-    const Url = baseUrl + {currentPage} +'&with_genres='+{currentGenre}
+
+    const [currentGenre, setCurrentGenre] = useState("80");
+    const [currentPage, setCurrentPage] = useState("1");
+    
+    
     
 
     const dispatch = useDispatch();
@@ -44,15 +47,26 @@ const GetData = () => {
     } else if (status === STATUS.FETCHING){
         content = 'Is fetching';
     } else if (status === STATUS.SUCCESS){
-       // console.log('Got data',data);
-        content = data.results[0].title
-       // console.log('Data is', data);
-        // det är en array. hur man kan skriva ut de som en array?
+        console.log('Got data',data);
+        
+        content = data.results.map(home =>
+             <div key={home.id}>
+                 <h4>{home.title}</h4>
+                <a href={imageBaseUrlOriginal+home.backdrop_path}>
+                    <img src={imageBaseUrl+home.backdrop_path} alt="" />
+
+                </a>
+                 
+             </div>
+            )
+     
     } else {
         content = 'could not get data';
     }
 
     useEffect(()=>{
+       // setCurrentGenre=80
+        const Url = baseUrl + {currentPage} +'&with_genres='+{currentGenre};
         fetchData(dispatch,Url);
         /*
         fetchData(dispatch,adventure);
@@ -86,7 +100,7 @@ return(
         <p>
             <button>Get Data</button>
         </p>
-        {}
+        {content}
       
     </div>
 )
@@ -94,13 +108,14 @@ return(
 }
 
 
-async function fetchData(dispatch,Url) {
+async function fetchData(dispatch,url) {
 
     dispatch(actions.isFetching());
+    console.log('url är ',url);
 
  
     try {
-        let response = await fetch(Url);
+        let response = await fetch(url);
         let json = await response.json();
         //console.log('Got data',Url, json);
         let fact= json; 
