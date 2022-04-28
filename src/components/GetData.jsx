@@ -34,8 +34,9 @@ const GetData = () => {
     const data = useSelector(state => state.getdata.data);
     const baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page='
 
-    const [currentGenre, setCurrentGenre] = useState("80");
+    const [currentGenre, setCurrentGenre] = useState("28");
     const [currentPage, setCurrentPage] = useState("1");
+    const Url = baseUrl + currentPage +'&with_genres='+ currentGenre;
     
     
     
@@ -66,7 +67,7 @@ const GetData = () => {
 
     useEffect(()=>{
        // setCurrentGenre=80
-        const Url = baseUrl + {currentPage} +'&with_genres='+{currentGenre};
+        
         fetchData(dispatch,Url);
         /*
         fetchData(dispatch,adventure);
