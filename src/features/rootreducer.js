@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { reducer as getDataReducer } from "./getdata";
+import { reducer as actionReducer } from "./action";
+import { comedyReducer as coReducer } from "./comedy";
 
 const rootReducer = combineReducers({
-    getdata: getDataReducer
+    action: actionReducer,
+    comedy: coReducer
 
 });
 

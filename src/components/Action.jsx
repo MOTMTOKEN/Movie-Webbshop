@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {actions, STATUS} from '../features/getdata';
+import {actions, STATUS} from '../features/action';
 
 
 const action='https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page=1&with_genres=28';
@@ -29,9 +29,9 @@ const imageBaseUrlOriginal = 'https://image.tmdb.org/t/p/original';
 
 
 
-const GetData = () => {
-    const status = useSelector(state => state.getdata.status);
-    const data = useSelector(state => state.getdata.data);
+const Action = () => {
+    const status = useSelector(state => state.action.status);
+    const data = useSelector(state => state.action.data);
     const baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page='
 
     const [currentGenre, setCurrentGenre] = useState("28");
@@ -42,15 +42,15 @@ const GetData = () => {
     
 
     const dispatch = useDispatch();
-    let content = null ;
+    let actionContent = null ;
     if (status === STATUS.NORMAL){
-        content = 'Redo för lite Fakta?';
+        actionContent = 'Redo för lite Fakta?';
     } else if (status === STATUS.FETCHING){
-        content = 'Is fetching';
+        actionContent = 'Is fetching';
     } else if (status === STATUS.SUCCESS){
-        console.log('Got data',data);
+        console.log('Got data action',data);
         
-        content = data.results.map(home =>
+        actionContent = data.results.map(home =>
              <div key={home.id}>
                  <h4>{home.title}</h4>
                 <a href={imageBaseUrlOriginal+home.backdrop_path}>
@@ -62,7 +62,7 @@ const GetData = () => {
             )
      
     } else {
-        content = 'could not get data';
+        actionContent = 'could not get data';
     }
 
     useEffect(()=>{
@@ -101,7 +101,11 @@ return(
         <p>
             <button>Get Data</button>
         </p>
-        {content}
+        <div className="container">
+        {actionContent}
+
+        </div>
+        
       
     </div>
 )
@@ -112,7 +116,7 @@ return(
 async function fetchData(dispatch,url) {
 
     dispatch(actions.isFetching());
-    console.log('url är ',url);
+    console.log('url är action ',url);
 
  
     try {
@@ -131,4 +135,4 @@ async function fetchData(dispatch,url) {
     
 
 }
-export default GetData; 
+export default Action; 

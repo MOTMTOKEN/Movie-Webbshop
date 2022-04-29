@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import Home from "./pages/Home";
 import Error from './pages/Error';
-import GetData from './components/GetData';
+import Action from './components/Action';
+import './App.css';
+import Comedy from './components/Comedy';
+
 
 
 
@@ -24,7 +27,10 @@ export default function App() {
         <Route path="/" element={<Home />}/>
         <Route path="*" element={<Error />}/>
       </Routes>
-      <GetData/>
+      <Action/>
+
+      <Comedy/>
+      
     </Router>
   );
 }

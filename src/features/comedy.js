@@ -4,36 +4,36 @@ import { createAction, createReducer } from "@reduxjs/toolkit"
 const isFetching = createAction('is fetching');
 const success = createAction('success');
 const failure = createAction('failure');
-const actions = {
+const comedyActions = {
     isFetching, success , failure
 }
 
-const STATUS = {
+const COMEDYSTATUS = {
     NORMAL: 'normal',
     FETCHING :'is fetching',
     SUCCESS : 'success',
     FAILURE :'failure'
 }
 
-const initialState ={
-    status: STATUS.NORMAL,
+const InitialState ={
+    status: COMEDYSTATUS.NORMAL,
     data : null
 }
-const reducer = createReducer(initialState, {
+const comedyReducer = createReducer(InitialState, {
     [isFetching] : (state, action)=> ({
         ...state, 
-        status: STATUS.FETCHING
+        status: COMEDYSTATUS.FETCHING
     }),
     [success] : (state, action) => ({
-        status : STATUS.SUCCESS,
+        status : COMEDYSTATUS.SUCCESS,
         data : action.payload
     }),
-    [failure] : (state,action) => ({
-        status : STATUS.FAILURE,
+    [failure] : (state, action) => ({
+        status : COMEDYSTATUS.FAILURE,
         data : null
 
     })
 })
 
 
-export {actions, STATUS, reducer}
+export {comedyActions, COMEDYSTATUS, comedyReducer}
