@@ -2,9 +2,9 @@
 import { createAction, createReducer } from "@reduxjs/toolkit"
 
 
-const isFetching = createAction('is fetching');
-const success = createAction('success');
-const failure = createAction('failure');
+const isFetching = createAction('is fetching action movie');
+const success = createAction('success fetching action movie');
+const failure = createAction('failure fetching action movie');
 const actions = {
     isFetching, success , failure
 }

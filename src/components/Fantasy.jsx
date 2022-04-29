@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {comedyActions, COMEDYSTATUS} from '../features/comedy';
+import {fantasyActions, FANTASYSTATUS} from '../features/fantasy';
 
 
 
@@ -10,25 +10,25 @@ const imageBaseUrlOriginal = 'https://image.tmdb.org/t/p/original';
 
 
 
-const Comedy = () => {
-    const status = useSelector(state => state.comedy.status);
-    const data = useSelector(state => state.comedy.data);
+const Fantasy = () => {
+    const status = useSelector(state => state.fantasy.status);
+    const data = useSelector(state => state.fantasy.data);
     const baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page='
 
-    const [currentGenre, setCurrentGenre] = useState("35");
+    const [currentGenre, setCurrentGenre] = useState("14");
     const [currentPage, setCurrentPage] = useState("1");
     const Url = baseUrl + currentPage +'&with_genres='+ currentGenre;
     
     
     
 
-    const comedydispatch = useDispatch();
+    const fantasydispatch = useDispatch();
     let content = null ;
-    if (status === COMEDYSTATUS.NORMAL){
+    if (status === FANTASYSTATUS.NORMAL){
         content = 'Redo för lite Fakta?';
-    } else if (status === COMEDYSTATUS.FETCHING){
+    } else if (status === FANTASYSTATUS.FETCHING){
         content = 'Is fetching';
-    } else if (status === COMEDYSTATUS.SUCCESS){
+    } else if (status === FANTASYSTATUS.SUCCESS){
         console.log('Got data comedy',data);
         
         content = data.results.map(home =>
@@ -48,13 +48,13 @@ const Comedy = () => {
 
     useEffect(()=>{
          
-        fetchData(comedydispatch,Url);
+        fetchData(fantasydispatch,Url);
     },[])
     
 return(
     <div>
         <p>
-            
+            <button>Get Data</button>
         </p>
         <div className="container">
         {content}
@@ -66,9 +66,9 @@ return(
 )
 }
 
-async function fetchData(comedydispatch,url) {
+async function fetchData(fantasydispatch,url) {
 
-    comedydispatch(comedyActions.isFetching());
+    fantasydispatch(fantasyActions.isFetching());
     console.log('url är comedy ',url);
 
  
@@ -78,14 +78,14 @@ async function fetchData(comedydispatch,url) {
         //console.log('Got data',Url, json);
         let actionen= json; 
 
-        comedydispatch(comedyActions.success(actionen));
+        fantasydispatch(fantasyActions.success(actionen));
 
     }catch {
 
-        comedydispatch(comedyActions.failure());
+        fantasydispatch(fantasyActions.failure());
 
     }
     
 
 }
-export default Comedy; 
+export default Fantasy; 

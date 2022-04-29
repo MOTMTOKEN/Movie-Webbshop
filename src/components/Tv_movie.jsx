@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {comedyActions, COMEDYSTATUS} from '../features/comedy';
+import {tv_movieActions, TV_MOVIESTATUS} from '../features/tv_movie';
 
 
 
@@ -10,25 +10,25 @@ const imageBaseUrlOriginal = 'https://image.tmdb.org/t/p/original';
 
 
 
-const Comedy = () => {
-    const status = useSelector(state => state.comedy.status);
-    const data = useSelector(state => state.comedy.data);
+const Tv_movie = () => {
+    const status = useSelector(state => state.tv_movie.status);
+    const data = useSelector(state => state.tv_movie.data);
     const baseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page='
 
-    const [currentGenre, setCurrentGenre] = useState("35");
+    const [currentGenre, setCurrentGenre] = useState("10770");
     const [currentPage, setCurrentPage] = useState("1");
     const Url = baseUrl + currentPage +'&with_genres='+ currentGenre;
     
     
     
 
-    const comedydispatch = useDispatch();
+    const tv_moviedispatch = useDispatch();
     let content = null ;
-    if (status === COMEDYSTATUS.NORMAL){
+    if (status === TV_MOVIESTATUS.NORMAL){
         content = 'Redo för lite Fakta?';
-    } else if (status === COMEDYSTATUS.FETCHING){
+    } else if (status === TV_MOVIESTATUS.FETCHING){
         content = 'Is fetching';
-    } else if (status === COMEDYSTATUS.SUCCESS){
+    } else if (status === TV_MOVIESTATUS.SUCCESS){
         console.log('Got data comedy',data);
         
         content = data.results.map(home =>
@@ -48,7 +48,7 @@ const Comedy = () => {
 
     useEffect(()=>{
          
-        fetchData(comedydispatch,Url);
+        fetchData(tv_moviedispatch,Url);
     },[])
     
 return(
@@ -66,9 +66,9 @@ return(
 )
 }
 
-async function fetchData(comedydispatch,url) {
+async function fetchData(tv_moviedispatch,url) {
 
-    comedydispatch(comedyActions.isFetching());
+    tv_moviedispatch(tv_movieActions.isFetching());
     console.log('url är comedy ',url);
 
  
@@ -78,14 +78,14 @@ async function fetchData(comedydispatch,url) {
         //console.log('Got data',Url, json);
         let actionen= json; 
 
-        comedydispatch(comedyActions.success(actionen));
+        tv_moviedispatch(tv_movieActions.success(actionen));
 
     }catch {
 
-        comedydispatch(comedyActions.failure());
+        tv_moviedispatch(tv_movieActions.failure());
 
     }
     
 
 }
-export default Comedy; 
+export default Tv_movie; 
