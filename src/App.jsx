@@ -44,33 +44,42 @@ export default function App() {
         <Route path="/" element={<Home />}/>
         <Route path="*" element={<Error />}/>
       </Routes>
+      <h1>Action </h1>
       <Action/>
-
+      <h1>Comedy </h1>
       <Comedy/>
+      <h1>Adventure </h1>
       <Adventure/>
+      <h1>Animation </h1>
       <Animation/>
+      <h1>Documentry </h1>
       <Documentry/>
+      <h1>Drama </h1>
       <Drama/>
+      <h1>Family </h1>
       <Family/>
+      <h1>Crime </h1>
       <Crime/>
+      <h1>Fantasy </h1>
       <Fantasy/>
+      <h1>History </h1>
       <History/>
+      <h1>Horror </h1>
       <Horror/>
+      <h1>Music </h1>
       <Music/>
+      <h1>Mystery </h1>
       <Mystery/>
       <h1>Siencs Fiction</h1>
-      
       <Si_fi/>
       <h1>Tv Movie </h1>
       <Tv_movie/>
       <h1>Thriller </h1>
       <Thriller/>
       <h1>War </h1>
-      
       <War/>
       <h1>Western </h1>
       <Western/>
-     
       
     </Router>
   );

@@ -53,9 +53,7 @@ const Tv_movie = () => {
     
 return(
     <div>
-        <p>
-            
-        </p>
+     
         <div className="container">
         {content}
 

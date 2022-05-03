@@ -53,9 +53,7 @@ const Family = () => {
     
 return(
     <div>
-        <p>
-            <button>Get Data</button>
-        </p>
+    
         <div className="container">
         {content}
 

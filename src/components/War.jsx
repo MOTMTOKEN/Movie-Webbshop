@@ -53,9 +53,7 @@ const War = () => {
     
 return(
     <div>
-        <p>
-            
-        </p>
+    
         <div className="container">
         {content}
 

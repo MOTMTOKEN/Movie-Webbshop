@@ -53,9 +53,7 @@ const Comedy = () => {
     
 return(
     <div>
-        <p>
-            
-        </p>
+      
         <div className="container">
         {content}
 
