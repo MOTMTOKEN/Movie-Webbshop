@@ -22,11 +22,6 @@ import Thriller from './components/Thriller';
 import War from './components/War';
 import Western from './components/Western';
 
-
-
-
-
-
 const linkStyle = {
   textDecoration: 'none', 
   padding: '10px', 
