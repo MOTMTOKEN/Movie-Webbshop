@@ -28,12 +28,16 @@ import { thrillerReducer  } from "./thriller";
 import { warReducer  } from "./war";
 
 import { westernReducer  } from "./western";
+import { movieGenreReducer } from "./movieGenre";
 
 
 
 const rootReducer = combineReducers({
+    
+    movieGenre : movieGenreReducer
+    /*
     action: actionReducer,
-    comedy: coReducer,
+     comedy: coReducer,
     adventure : advenReducer,
     animation : animationReducer,
     documentry : documentryReducer,
@@ -63,6 +67,7 @@ const rootReducer = combineReducers({
     war : warReducer,
     
     western : westernReducer
+    */
    
 
 

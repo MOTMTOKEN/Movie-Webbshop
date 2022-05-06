@@ -5,7 +5,7 @@ import Error from './pages/Error';
 import Action from './components/Action';
 import './App.css';
 import Comedy from './components/Comedy';
-import Adventure from './components/Adventure';
+import MovieGenre from './components/MovieGenre';
 import Animation from './components/Animation';
 import Documentry from './components/Documentry';
 import Drama from './components/Drama';
@@ -41,11 +41,30 @@ export default function App() {
         <Route path="*" element={<Error />}/>
       </Routes>
       <h1>Action </h1>
-      <Action/>
-      <h1>Comedy </h1>
+      <MovieGenre genreNumber="12"/>
+
+      
+     
+     
+      
+      
+      
+    </Router>
+  );
+}
+/*
+<h1>Comedy </h1>
       <Comedy/>
       <h1>Adventure </h1>
-      <Adventure/>
+
+
+
+
+     
+
+
+
+
       <h1>Animation </h1>
       <Animation/>
       <h1>Documentry </h1>
@@ -74,11 +93,8 @@ export default function App() {
       <Thriller/>
       <h1>War </h1>
       <War/>
-      <h1>Western </h1>
+      
 
       <h1>Western </h1>
       <Western/>
-      
-    </Router>
-  );
-}
+      */
