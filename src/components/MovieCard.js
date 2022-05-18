@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actions } from '../reducers/cartReducer';
 
+
 const MovieCard = ({movie, add=false, remove=false}) => {
     const dispatch = useDispatch();
 
@@ -30,7 +31,7 @@ const MovieCard = ({movie, add=false, remove=false}) => {
             <h4 className="movietitletext" >{movie.title}</h4>
         </div>
         </Link>
-            <button hidden={!add} onClick={ handleAdd }>Add</button>
+            <button id="Addbtn" hidden={!add} onClick={ handleAdd }>Add</button> 
             <button hidden={!remove} onClick={ handleRemove }>Remove</button>
         </div>
     );
