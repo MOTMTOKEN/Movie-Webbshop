@@ -29,8 +29,12 @@ export default function Checkout() {
             <h1 >
                 Total: ({count} x 19.90) {stripPrecision(count*19.90, 2)} SEK
             </h1>
-            {rendermovies()}
-            <button hidden={count === 0} onClick={ handlePay }>Pay</button>
+            <div className='checkContent'>
+                    {rendermovies()}
+
+            </div>
+            
+            <button className='payButton' hidden={count === 0} onClick={ handlePay }>Pay</button>
         </div>
     );
 }

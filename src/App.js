@@ -51,6 +51,7 @@ export default function App() {
   useEffect(() => {
     setWithExpiry(ALL_MOVIES_STORAGE_KEY, movies, 30000) //TTL 30 sec
   }, [movies])
+ 
 
   return (
     <Router>
