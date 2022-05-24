@@ -40,11 +40,10 @@ export default function App() {
         
       }else{
         */
-        const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page=${{page}}`)
-        setMovies(response.data.results)
-        console.log('response',response.data.results);
-        console.log(`https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page=${page}`);
-      
+        const data = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=de835b19001cc7adb8bbdb742da78711&language=en-US&sort_by=popularity.desc&include_video=false&page=${page}`);
+        const response = await data.json();
+        //setMovies(movies.concat(response.results));
+        setMovies(response.results);
     }catch(err){
       console.log('Failed getting data: '+ err)
     } 
@@ -71,42 +70,6 @@ export default function App() {
     setWithExpiry(ALL_MOVIES_STORAGE_KEY, movies, 30000) //TTL 30 sec
   }, [movies])
   
-/*
-  window.onscroll= function(){
-    const doc =document.documentElement;
-
-    const offset = doc.scrollTop + window.outerHeight;
-    const height = doc.offsetHeight;
-    if(offset >= height){
-      if(!loadingPage){
-        nextPage()
-    }
-      
-    }
-  }
-  
-    /* const timer = setTimeout(() => nextPage(), 1000);
-    clearTimeout(timer);
-    
-    
-    async function nextPage(){
-      loadingPage=true
-
-      setCurrentPage(currentPage+1);
-      console.log(currentPage);
-      fetchMovies();
-      
-      loadingPage=false;
-
-
-
-  }
-  */
-  
-
-
-
- 
 
   return (
     <div>
@@ -127,13 +90,17 @@ export default function App() {
     </Router>
     <div className="navBtn">
           <img className='firstPage' onClick={()=> {setCurrentPage(1)
-          console.log(currentPage)
-          fetchMovies()
+           let page = 1 ;
+           setCurrentPage(page);
+         console.log(currentPage);
+         fetchMovies(page.toString());
           }} src={FirstPage} alt=''></img>
 
           <img className='back' onClick={()=> {setCurrentPage(currentPage-1)
-          console.log(currentPage)
-          fetchMovies()}} src={Back} alt=''></img>
+        let page = currentPage -1 ;
+        setCurrentPage(page);
+      console.log(currentPage);
+      fetchMovies(page.toString());}} src={Back} alt=''></img>
 
           <img className='next' onClick={()=> {
             let page = currentPage +1 ;
@@ -150,3 +117,4 @@ export default function App() {
   );
 }
 
+gi

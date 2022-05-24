@@ -31,7 +31,7 @@ const MovieCard = ({movie, add=false, remove=false}) => {
         </div>
         </Link>
             <div className="center">
-                 <button className="addButton" hidden={!add} onClick={ handleAdd }>Add</button>
+                 <button className="addButton" hidden={!add} onClick={ handleAdd }>buy</button>
                  <button className="removeButton" hidden={!remove} onClick={ handleRemove }>Remove</button>
 
             </div>
