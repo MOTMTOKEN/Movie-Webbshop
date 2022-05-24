@@ -148,6 +148,7 @@
         padding: 10px;
         border-radius: 1em;
         align-content: center;
+        
     
   }
   .center{
@@ -228,6 +229,42 @@
     
     text-decoration: none;
     color: aliceblue;
+}
+.navBtn{
+    display: flex;
+    
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding-top: 300px;
+    
+    
+    
+
+}
+.next{
+    padding-top: auto;
+    padding-right: 40%;
+   
+    
+    width: 3rem;
+    cursor: pointer;
+}
+.back{
+    padding-top: auto;
+    
+    width: 3rem;
+    cursor: pointer;
+}
+.firstPage{
+    padding-top: auto;
+    padding-left: 40%;
+    
+    width: 3rem;
+    cursor: pointer;
+}
+.app{
+    padding: auto;
 }
 
 
